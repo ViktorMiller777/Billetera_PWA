@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mi Billetera Lite</title>
+  <meta name="description" content="Registra tus gastos diarios, incluso sin conexión.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top__brand">
+      <h1>Mi Billetera Lite</h1>
+      <span id="estado-red" class="badge" aria-live="polite">En línea</span>
+    </div>
+    <div class="total" role="status" aria-live="polite">
+      <span class="total__label">Total gastado</span>
+      <strong id="total" class="total__monto">$0.00</strong>
+    </div>
+    <button id="btn-instalar" class="btn-instalar" hidden>Instalar app</button>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Nuevo gasto</h2>
+      <form id="form-gasto" novalidate>
+        <label for="concepto">Concepto</label>
+        <input id="concepto" name="concepto" type="text" placeholder="Ej: Café" maxlength="60" required autocomplete="off">
+
+        <label for="monto">Monto</label>
+        <input id="monto" name="monto" type="number" inputmode="decimal" step="0.01" min="0.01" placeholder="Ej: 45.50" required>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" required>
+          <option value="Comida">Comida</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Servicios">Servicios</option>
+          <option value="Ocio">Ocio</option>
+          <option value="Otros">Otros</option>
+        </select>
+
+        <p id="error" class="error" role="alert" hidden></p>
+        <button type="submit" class="btn-guardar">Guardar gasto</button>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="titulo-historial">
+      <h2 id="titulo-historial">Historial</h2>
+      <ul id="lista" class="lista"></ul>
+      <p id="vacio" class="vacio">Aún no hay gastos registrados.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
